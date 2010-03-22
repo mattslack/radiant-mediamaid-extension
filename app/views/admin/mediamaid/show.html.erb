@@ -1,0 +1,67 @@
+<h3><%= @mediamaid.mediamaid_file_name -%> Information
+<table cellpadding="5">
+   <tr>
+    <td>Content Type:</td>
+    <td><%= @mediamaid.mediamaid_content_type %>
+  </tr>
+  <tr>
+    <td>Size:</td> 
+    <td>
+       <%
+      size = @mediamaid.mediamaid_file_size 
+      if (size> 1000000)
+        = size/1000000," MB"
+        elsif ( size > 1000 )
+        =size/1000," KB"
+      else 
+        =size," bytes"
+       %>
+      </td>
+  </tr>
+  <tr>
+     <td>Upload Date:</td>
+     <td><%= @mediamaid.created_at.strftime('%m/%d/%Y') -%></td>
+ 
+  <% if @mediamaid.mediamaid_content_type =~ /image/ %>
+    <tr>
+      <td colspan="2">
+        <h2>Image Sizes</h2>
+        <%= link_to "Original", "#{original}" %><br>
+        <%= link_to "Thumbnail", "#{thumbnail}" %><br>
+        <%= link_to "Large", "#{large}" %><br>
+        <%= link_to "Medium", "#{medium}" %><br>
+       </td>
+    </tr>
+    <tr>
+      <td>
+         <%= link_to "Thumbnail", "#{thumbnail}" %>
+      </td>
+      <td>
+          <%= image_tag @mediamaid.mediamaid.url(:thumb) -%>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <%= link_to "Original", "#{original}" %><br>
+      </td>
+      <td><%= image_tag @mediamaid.mediamaid.url(:original) -%></td>
+   </tr>
+   <tr>
+      <td>
+         <%= link_to "Large", "#{large}" %><br>
+      </td>
+      <td><%= image_tag @mediamaid.mediamaid.url(:large) -%></td>
+   </tr>
+   <tr>
+      <td> 
+         <%= link_to "Medium", "#{medium}" %><br>
+      </td>
+      <td><%= image_tag @mediamaid.mediamaid.url(:medium) -%>
+  </tr>
+  <tr>
+    <td colspan="2" style="background-color:#A0A0A0"></td>
+  </tr>
+  <tr>
+    <td><%= link_to image_tag('/images/admin/remove.png'), remove_admin_mediamaid_url(@mediamaid),:confirm=>"Are you sure?" -%></td>
+  </tr>
+ </table>
