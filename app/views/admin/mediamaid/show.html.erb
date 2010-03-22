@@ -10,11 +10,12 @@
        <%
       size = @mediamaid.mediamaid_file_size 
       if (size> 1000000)
-        = size/1000000," MB"
-        elsif ( size > 1000 )
-        =size/1000," KB"
+         puts (size/1000000).to_s << "MB"
+      elsif ( size > 1000 )
+         puts (size/1000).to_s << " KB"
       else 
-        =size," bytes"
+         puts size << " bytes"
+      end
        %>
       </td>
   </tr>
@@ -26,15 +27,15 @@
     <tr>
       <td colspan="2">
         <h2>Image Sizes</h2>
-        <%= link_to "Original", "#{original}" %><br>
-        <%= link_to "Thumbnail", "#{thumbnail}" %><br>
-        <%= link_to "Large", "#{large}" %><br>
-        <%= link_to "Medium", "#{medium}" %><br>
+        <%= link_to "Original", "#original" %><br>
+        <%= link_to "Thumbnail", "#thumbnail" %><br>
+        <%= link_to "Large", "#large" %><br>
+        <%= link_to "Medium", "#medium" %><br>
        </td>
     </tr>
     <tr>
       <td>
-         <%= link_to "Thumbnail", "#{thumbnail}" %>
+         <%= link_to "Thumbnail", "#thumbnail" %>
       </td>
       <td>
           <%= image_tag @mediamaid.mediamaid.url(:thumb) -%>
@@ -42,26 +43,27 @@
    </tr>
    <tr>
       <td>
-         <%= link_to "Original", "#{original}" %><br>
+         <%= link_to "Original", "#original" %><br>
       </td>
       <td><%= image_tag @mediamaid.mediamaid.url(:original) -%></td>
    </tr>
    <tr>
       <td>
-         <%= link_to "Large", "#{large}" %><br>
+         <%= link_to "Large", "#large" %><br>
       </td>
       <td><%= image_tag @mediamaid.mediamaid.url(:large) -%></td>
    </tr>
    <tr>
       <td> 
-         <%= link_to "Medium", "#{medium}" %><br>
+         <%= link_to "Medium", "#medium" %><br>
       </td>
       <td><%= image_tag @mediamaid.mediamaid.url(:medium) -%>
   </tr>
   <tr>
     <td colspan="2" style="background-color:#A0A0A0"></td>
   </tr>
+  <% end %>
   <tr>
-    <td><%= link_to image_tag('/images/admin/remove.png'), remove_admin_mediamaid_url(@mediamaid),:confirm=>"Are you sure?" -%></td>
+    <td class="remove"><%= link_to "remove", remove_admin_mediamaid_url(@mediamaid),:confirm=>"Are you sure?" -%></td>
   </tr>
  </table>
