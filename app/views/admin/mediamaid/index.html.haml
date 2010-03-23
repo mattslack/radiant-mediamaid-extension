@@ -19,4 +19,4 @@
             = link_to m.mediamaid_file_name, :action => "show", :id  => m
             = link_to m.mediamaid_content_type, :action => "show", :id  => m 
           %td= m.created_at.strftime('%m/%d/%Y')
-          %td= link_to image_tag('/images/admin/remove.png'), remove_admin_mediamaid_url(m),:confirm=>"Are you sure?"
+          %td= link_to "Remove", remove_admin_mediamaid_url(m),:confirm=>"Are you sure?"

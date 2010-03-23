@@ -22,7 +22,7 @@
     Radiant::Config['mediamaid.thumb'] ||= "100x100"
     Radiant::Config['mediamaid.small'] ||= "200x200"
     Radiant::Config['mediamaid.medium'] ||= "300x300"
-    Radiant::Config['mediamaid.large'] ||= "400x400"
+    Radiant::Config['mediamaid.large'] ||= "640x640"
     
   
     Admin::PagesController.class_eval do
